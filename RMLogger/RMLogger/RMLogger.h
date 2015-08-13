@@ -10,4 +10,10 @@
 
 @interface RMLogger : NSObject
 
+- (void)log:(NSString *)logMessage;
+- (void)logString:(NSString *)logMessage;
+- (void)logError:(NSString *)errorMessage;
+- (void)logInfo:(NSString *)infoMessage;
+- (void)logSuccess:(NSString *)successMessage;
+
 @end
