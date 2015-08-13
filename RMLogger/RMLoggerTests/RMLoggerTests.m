@@ -38,10 +38,21 @@
 
 #pragma mark - Test methods
 
-- (void)testSimpleMessageLog
+- (void)testUniversalLogWithString
 {
     [self.loggerMock log:@"hello"];
     OCMVerify([self.loggerMock logString:@"🔵 hello"]);
+}
+
+- (void)testUniversalLogWithError
+{
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"error description" forKey:NSLocalizedDescriptionKey];
+    NSError *error = [NSError errorWithDomain:@"error domain"
+                                         code:123
+                                     userInfo:userInfo];
+    
+    [self.loggerMock log:error];
+    OCMVerify([self.loggerMock logString:@"🔴 Error 123: \"error description\""]);
 }
 
 
@@ -61,6 +72,18 @@
 {
     [self.loggerMock logSuccessMessage:@"success"];
     OCMVerify([self.loggerMock logString:@"✅ success"]);
+}
+
+
+- (void)testErrorLog
+{
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"error description" forKey:NSLocalizedDescriptionKey];
+    NSError *error = [NSError errorWithDomain:@"error domain"
+                                         code:123
+                                     userInfo:userInfo];
+    
+    [self.loggerMock logError:error];
+    OCMVerify([self.loggerMock logString:@"🔴 Error 123: \"error description\""]);
 }
 
 

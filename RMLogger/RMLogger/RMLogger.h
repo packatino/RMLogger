@@ -43,4 +43,9 @@ FOUNDATION_EXPORT void RMLog(NSObject *object);
 /// Logs a message and marks it as a success.
 - (void)logSuccessMessage:(NSString *)successMessage;
 
+#pragma mark -
+
+/// Special log for NSError objects
+- (void)logError:(NSError *)error;
+
 @end

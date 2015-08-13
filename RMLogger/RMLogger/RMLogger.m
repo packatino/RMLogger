@@ -31,18 +31,30 @@ FOUNDATION_EXTERN void RMLog(NSObject *object)
 }
 
 
-#pragma mark - Logging
+#pragma mark - Actual Logging
 
 - (void)logString:(NSString *)logMessage
 {
     NSLog(@"%@", logMessage);
 }
 
+
+#pragma mark - Universal Logging
+
 - (void)log:(NSObject *)object
 {
-    [self logInfoMessage:object.description];
+    if ([object isKindOfClass:[NSError class]])
+    {
+        [self logError:((NSError *)object)];
+    }
+    else
+    {
+        [self logInfoMessage:object.description];
+    }
 }
 
+
+#pragma mark - Logging strings
 
 - (void)logErrorMessage:(NSString *)errorMessage
 {
@@ -60,6 +72,15 @@ FOUNDATION_EXTERN void RMLog(NSObject *object)
 {
     NSString *logString = [NSString stringWithFormat:@"✅ %@", successMessage];
     [self logString:logString];
+}
+
+
+#pragma mark - Logging special objects
+
+- (void)logError:(NSError *)error
+{
+    NSString *errorString = [NSString stringWithFormat:@"Error %li: \"%@\"", (long)error.code, error.localizedDescription];
+    [self logErrorMessage:errorString];
 }
 
 @end
