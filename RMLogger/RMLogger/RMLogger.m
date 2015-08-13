@@ -40,23 +40,23 @@ FOUNDATION_EXTERN void RMLog(NSObject *object)
 
 - (void)log:(NSObject *)object
 {
-    [self logInfo:object.description];
+    [self logInfoMessage:object.description];
 }
 
 
-- (void)logError:(NSString *)errorMessage
+- (void)logErrorMessage:(NSString *)errorMessage
 {
     NSString *logString = [NSString stringWithFormat:@"🔴 %@", errorMessage];
     [self logString:logString];
 }
 
-- (void)logInfo:(NSString *)infoMessage
+- (void)logInfoMessage:(NSString *)infoMessage
 {
     NSString *logString = [NSString stringWithFormat:@"🔵 %@", infoMessage];
     [self logString:logString];
 }
 
-- (void)logSuccess:(NSString *)successMessage
+- (void)logSuccessMessage:(NSString *)successMessage
 {
     NSString *logString = [NSString stringWithFormat:@"✅ %@", successMessage];
     [self logString:logString];

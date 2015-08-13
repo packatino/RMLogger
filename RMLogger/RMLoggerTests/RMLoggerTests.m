@@ -44,21 +44,22 @@
     OCMVerify([self.loggerMock logString:@"🔵 hello"]);
 }
 
+
 - (void)testErrorMessageLog
 {
-    [self.loggerMock logError:@"error"];
+    [self.loggerMock logErrorMessage:@"error"];
     OCMVerify([self.loggerMock logString:@"🔴 error"]);
 }
 
 - (void)testInfoMessageLog
 {
-    [self.loggerMock logInfo:@"info"];
+    [self.loggerMock logInfoMessage:@"info"];
     OCMVerify([self.loggerMock logString:@"🔵 info"]);
 }
 
 - (void)testSuccessMessageLog
 {
-    [self.loggerMock logSuccess:@"success"];
+    [self.loggerMock logSuccessMessage:@"success"];
     OCMVerify([self.loggerMock logString:@"✅ success"]);
 }
 
