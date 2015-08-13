@@ -8,17 +8,39 @@
 
 #import "RMLogger.h"
 
+
+FOUNDATION_EXTERN void RMLog(NSObject *object)
+{
+    [[RMLogger sharedInstance] log:object];
+}
+
+
 @implementation RMLogger
 
+
+#pragma mark - Object live cycle
+
++ (RMLogger *)sharedInstance
+{
+    static RMLogger *sharedInstance = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedInstance = [[self alloc] init];
+    });
+    return sharedInstance;
+}
+
+
+#pragma mark - Logging
 
 - (void)logString:(NSString *)logMessage
 {
     NSLog(@"%@", logMessage);
 }
 
-- (void)log:(NSString *)logMessage
+- (void)log:(NSObject *)object
 {
-    [self logInfo:logMessage];
+    [self logInfo:object.description];
 }
 
 

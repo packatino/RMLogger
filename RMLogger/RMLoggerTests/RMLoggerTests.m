@@ -63,5 +63,15 @@
 }
 
 
+- (void)testQuickLog
+{
+    id loggerClassMock = OCMClassMock([RMLogger class]);
+    OCMStub([loggerClassMock sharedInstance]).andReturn(self.loggerMock);
+    
+    NSString *logMessage = @"hello";
+    RMLog(logMessage);
+    
+    OCMVerify([self.loggerMock log:logMessage]);
+}
 
 @end

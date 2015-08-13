@@ -8,9 +8,15 @@
 
 #import <Foundation/Foundation.h>
 
+
+FOUNDATION_EXPORT void RMLog(NSObject *object);
+
+
 @interface RMLogger : NSObject
 
-- (void)log:(NSString *)logMessage;
++ (RMLogger *)sharedInstance;
+
+- (void)log:(NSObject *)object;
 - (void)logString:(NSString *)logMessage;
 - (void)logError:(NSString *)errorMessage;
 - (void)logInfo:(NSString *)infoMessage;
