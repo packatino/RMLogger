@@ -7,9 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56FA74E3AF17B195672AB9FD /* libPods-RMLoggerTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6D064C37C956A1018FEE9EF7 /* libPods-RMLoggerTests.a */; };
 		E10B429F1B7CE3E2009741B3 /* RMLogger.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = E10B429E1B7CE3E2009741B3 /* RMLogger.h */; };
 		E10B42A11B7CE3E2009741B3 /* RMLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B42A01B7CE3E2009741B3 /* RMLogger.m */; };
 		E10B42A71B7CE3E2009741B3 /* libRMLogger.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E10B429B1B7CE3E2009741B3 /* libRMLogger.a */; };
+		E10B42B61B7CE46A009741B3 /* RMLoggerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B42B51B7CE46A009741B3 /* RMLoggerTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,11 +38,15 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		15B33334BC07AB505FF1C47D /* Pods-RMLoggerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMLoggerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RMLoggerTests/Pods-RMLoggerTests.release.xcconfig"; sourceTree = "<group>"; };
+		6D064C37C956A1018FEE9EF7 /* libPods-RMLoggerTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-RMLoggerTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B3D565B62764A6E37929E810 /* Pods-RMLoggerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RMLoggerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RMLoggerTests/Pods-RMLoggerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		E10B429B1B7CE3E2009741B3 /* libRMLogger.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libRMLogger.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10B429E1B7CE3E2009741B3 /* RMLogger.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RMLogger.h; sourceTree = "<group>"; };
 		E10B42A01B7CE3E2009741B3 /* RMLogger.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RMLogger.m; sourceTree = "<group>"; };
 		E10B42A61B7CE3E2009741B3 /* RMLoggerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RMLoggerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E10B42AC1B7CE3E2009741B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E10B42B51B7CE46A009741B3 /* RMLoggerTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RMLoggerTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,18 +62,38 @@
 			buildActionMask = 2147483647;
 			files = (
 				E10B42A71B7CE3E2009741B3 /* libRMLogger.a in Frameworks */,
+				56FA74E3AF17B195672AB9FD /* libPods-RMLoggerTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		52F6B40FC88AB5F9AD0EF6EA /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6D064C37C956A1018FEE9EF7 /* libPods-RMLoggerTests.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7347BE905C03BD3C6533B48C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B3D565B62764A6E37929E810 /* Pods-RMLoggerTests.debug.xcconfig */,
+				15B33334BC07AB505FF1C47D /* Pods-RMLoggerTests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		E10B42921B7CE3E2009741B3 = {
 			isa = PBXGroup;
 			children = (
 				E10B429D1B7CE3E2009741B3 /* RMLogger */,
 				E10B42AA1B7CE3E2009741B3 /* RMLoggerTests */,
 				E10B429C1B7CE3E2009741B3 /* Products */,
+				7347BE905C03BD3C6533B48C /* Pods */,
+				52F6B40FC88AB5F9AD0EF6EA /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -93,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				E10B42AB1B7CE3E2009741B3 /* Supporting Files */,
+				E10B42B51B7CE46A009741B3 /* RMLoggerTests.m */,
 			);
 			path = RMLoggerTests;
 			sourceTree = "<group>";
@@ -129,9 +156,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = E10B42B21B7CE3E2009741B3 /* Build configuration list for PBXNativeTarget "RMLoggerTests" */;
 			buildPhases = (
+				D521E75322D12C647B3365C6 /* Check Pods Manifest.lock */,
 				E10B42A21B7CE3E2009741B3 /* Sources */,
 				E10B42A31B7CE3E2009741B3 /* Frameworks */,
 				E10B42A41B7CE3E2009741B3 /* Resources */,
+				119EAB189CD6FB1649C88573 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -188,6 +217,39 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		119EAB189CD6FB1649C88573 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RMLoggerTests/Pods-RMLoggerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D521E75322D12C647B3365C6 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E10B42971B7CE3E2009741B3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -201,6 +263,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E10B42B61B7CE46A009741B3 /* RMLoggerTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -313,6 +376,7 @@
 		};
 		E10B42B31B7CE3E2009741B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B3D565B62764A6E37929E810 /* Pods-RMLoggerTests.debug.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -331,6 +395,7 @@
 		};
 		E10B42B41B7CE3E2009741B3 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15B33334BC07AB505FF1C47D /* Pods-RMLoggerTests.release.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -362,6 +427,7 @@
 				E10B42B11B7CE3E2009741B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E10B42B21B7CE3E2009741B3 /* Build configuration list for PBXNativeTarget "RMLoggerTests" */ = {
 			isa = XCConfigurationList;
@@ -370,6 +436,7 @@
 				E10B42B41B7CE3E2009741B3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
