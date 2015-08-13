@@ -14,6 +14,22 @@ FOUNDATION_EXTERN void RMLog(NSObject *object)
     [[RMLogger sharedInstance] log:object];
 }
 
+FOUNDATION_EXTERN void RMLogErrorMessage(NSString *errorMessage)
+{
+    [[RMLogger sharedInstance] logErrorMessage:errorMessage];
+}
+
+FOUNDATION_EXTERN void RMLogInfoMessage(NSString *infoMessage)
+{
+    [[RMLogger sharedInstance] logInfoMessage:infoMessage];
+}
+
+FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *successMessage)
+{
+    [[RMLogger sharedInstance] logSuccessMessage:successMessage];
+}
+
+
 
 @implementation RMLogger
 

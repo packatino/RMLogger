@@ -12,6 +12,16 @@
 /// Quick way to access [[RMLogger sharedInstance] log:]
 FOUNDATION_EXPORT void RMLog(NSObject *object);
 
+/// Quick way to access [[RMLogger sharedInstance] logErrorMessage:]
+FOUNDATION_EXPORT void RMLogErrorMessage(NSString *errorMessage);
+
+/// Quick way to access [[RMLogger sharedInstance] logInfoMessage:]
+FOUNDATION_EXPORT void RMLogInfoMessage(NSString *infoMessage);
+
+/// Quick way to access [[RMLogger sharedInstance] logSuccessMessage:]
+FOUNDATION_EXPORT void RMLogSuccessMessage(NSString *successMessage);
+
+
 
 /**
  This is the class where the actual logging takes place.

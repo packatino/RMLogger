@@ -26,8 +26,13 @@
 
 - (void)setUp
 {
+    // create a mock for the logger
     RMLogger *logger = [[RMLogger alloc] init];
     self.loggerMock = OCMPartialMock(logger);
+    
+    // make sure the mock is always used
+    id loggerClassMock = OCMClassMock([RMLogger class]);
+    OCMStub([loggerClassMock sharedInstance]).andReturn(self.loggerMock);
 }
 
 - (void)tearDown
@@ -36,7 +41,7 @@
 }
 
 
-#pragma mark - Test methods
+#pragma mark - Test for unsiversal log
 
 - (void)testUniversalLogWithString
 {
@@ -55,6 +60,8 @@
     OCMVerify([self.loggerMock logString:@"🔴 Error 123: \"error description\""]);
 }
 
+
+#pragma mark - Tests for special logs
 
 - (void)testErrorMessageLog
 {
@@ -87,15 +94,39 @@
 }
 
 
+
+#pragma mark - Tests for quick log
+
 - (void)testQuickLog
 {
-    id loggerClassMock = OCMClassMock([RMLogger class]);
-    OCMStub([loggerClassMock sharedInstance]).andReturn(self.loggerMock);
-    
     NSString *logMessage = @"hello";
     RMLog(logMessage);
     
     OCMVerify([self.loggerMock log:logMessage]);
+}
+
+- (void)testQuickErrorMessageLog
+{
+    NSString *logMessage = @"error";
+    RMLogErrorMessage(logMessage);
+    
+    OCMVerify([self.loggerMock logErrorMessage:logMessage]);
+}
+
+- (void)testQuickInfoMessageLog
+{
+    NSString *logMessage = @"info";
+    RMLogInfoMessage(logMessage);
+    
+    OCMVerify([self.loggerMock logInfoMessage:logMessage]);
+}
+
+- (void)testQuickSuccessMessageLog
+{
+    NSString *logMessage = @"success";
+    RMLogSuccessMessage(logMessage);
+    
+    OCMVerify([self.loggerMock logSuccessMessage:logMessage]);
 }
 
 @end
