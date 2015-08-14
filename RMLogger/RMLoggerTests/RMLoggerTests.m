@@ -69,16 +69,34 @@
     OCMVerify([self.loggerMock logString:@"🔴 error"]);
 }
 
+- (void)testErrorMessageLogWithFormat
+{
+    [self.loggerMock logErrorMessage:@"error %.1f", 1.0];
+    OCMVerify([self.loggerMock logString:@"🔴 error 1.0"]);
+}
+
 - (void)testInfoMessageLog
 {
     [self.loggerMock logInfoMessage:@"info"];
     OCMVerify([self.loggerMock logString:@"🔵 info"]);
 }
 
+- (void)testInfoMessageLogWithFormat
+{
+    [self.loggerMock logInfoMessage:@"info %.1f", 1.0];
+    OCMVerify([self.loggerMock logString:@"🔵 info 1.0"]);
+}
+
 - (void)testSuccessMessageLog
 {
     [self.loggerMock logSuccessMessage:@"success"];
     OCMVerify([self.loggerMock logString:@"✅ success"]);
+}
+
+- (void)testSuccessMessageLogWithFormat
+{
+    [self.loggerMock logSuccessMessage:@"success %.1f", 1.0];
+    OCMVerify([self.loggerMock logString:@"✅ success 1.0"]);
 }
 
 
@@ -107,26 +125,50 @@
 
 - (void)testQuickErrorMessageLog
 {
-    NSString *logMessage = @"error";
-    RMLogErrorMessage(logMessage);
-    
-    OCMVerify([self.loggerMock logErrorMessage:logMessage]);
+    RMLogErrorMessage(@"error");
+    OCMVerify([self.loggerMock logString:@"🔴 error"]);
+}
+
+- (void)testQuickErrorMessageWithFormatLog
+{
+    RMLogErrorMessage(@"error %.1f", 1.0);
+    OCMVerify([self.loggerMock logString:@"🔴 error 1.0"]);
 }
 
 - (void)testQuickInfoMessageLog
 {
-    NSString *logMessage = @"info";
-    RMLogInfoMessage(logMessage);
-    
-    OCMVerify([self.loggerMock logInfoMessage:logMessage]);
+    RMLogInfoMessage(@"info");
+    OCMVerify([self.loggerMock logString:@"🔵 info"]);
+}
+
+- (void)testQuickInfoMessageWithFormatLog
+{
+    RMLogInfoMessage(@"info %.1f", 1.0);
+    OCMVerify([self.loggerMock logString:@"🔵 info 1.0"]);
 }
 
 - (void)testQuickSuccessMessageLog
 {
-    NSString *logMessage = @"success";
-    RMLogSuccessMessage(logMessage);
-    
-    OCMVerify([self.loggerMock logSuccessMessage:logMessage]);
+    RMLogSuccessMessage(@"success");
+    OCMVerify([self.loggerMock logString:@"✅ success"]);
+}
+
+- (void)testQuickSuccessMessageWithFormatLog
+{
+    RMLogSuccessMessage(@"success %.1f", 1.0);
+    OCMVerify([self.loggerMock logString:@"✅ success 1.0"]);
+}
+
+- (void)testQuickSuccessMessageWithWrongFormat1
+{
+    RMLogSuccessMessage(@"success %.1f");
+    OCMVerify([self.loggerMock logString:@"✅ success 0.0"]);
+}
+
+- (void)testQuickSuccessMessageWithWrongFormat2
+{
+    RMLogSuccessMessage(@"success", 1.0);
+    OCMVerify([self.loggerMock logString:@"✅ success"]);
 }
 
 @end

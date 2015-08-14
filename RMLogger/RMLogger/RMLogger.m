@@ -14,18 +14,33 @@ FOUNDATION_EXTERN void RMLog(NSObject *object)
     [[RMLogger sharedInstance] log:object];
 }
 
-FOUNDATION_EXTERN void RMLogErrorMessage(NSString *errorMessage)
+FOUNDATION_EXTERN void RMLogErrorMessage(NSString *format, ...)
 {
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *errorMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
     [[RMLogger sharedInstance] logErrorMessage:errorMessage];
 }
 
-FOUNDATION_EXTERN void RMLogInfoMessage(NSString *infoMessage)
+FOUNDATION_EXTERN void RMLogInfoMessage(NSString *format, ...)
 {
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *infoMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
     [[RMLogger sharedInstance] logInfoMessage:infoMessage];
 }
 
-FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *successMessage)
+FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *format, ...)
 {
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *successMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
     [[RMLogger sharedInstance] logSuccessMessage:successMessage];
 }
 
@@ -72,20 +87,35 @@ FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *successMessage)
 
 #pragma mark - Logging strings
 
-- (void)logErrorMessage:(NSString *)errorMessage
+- (void)logErrorMessage:(NSString *)format, ...
 {
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *errorMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
     NSString *logString = [NSString stringWithFormat:@"🔴 %@", errorMessage];
     [self logString:logString];
 }
 
-- (void)logInfoMessage:(NSString *)infoMessage
+- (void)logInfoMessage:(NSString *)format, ...
 {
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *infoMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
     NSString *logString = [NSString stringWithFormat:@"🔵 %@", infoMessage];
     [self logString:logString];
 }
 
-- (void)logSuccessMessage:(NSString *)successMessage
+- (void)logSuccessMessage:(NSString *)format, ...
 {
+    va_list arguments;
+    va_start(arguments, format);
+    NSString *successMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
+    va_end(arguments);
+    
     NSString *logString = [NSString stringWithFormat:@"✅ %@", successMessage];
     [self logString:logString];
 }
