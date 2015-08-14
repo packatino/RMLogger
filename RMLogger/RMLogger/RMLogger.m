@@ -9,6 +9,11 @@
 #import "RMLogger.h"
 
 
+NSString * const RMErrorSymbol = @"🔴";
+NSString * const RMInfoSymbol = @"🔵";
+NSString * const RMSuccessSymbol = @"✅";
+
+
 FOUNDATION_EXTERN void RMLog(NSObject *object)
 {
     [[RMLogger sharedInstance] log:object];
@@ -94,7 +99,7 @@ FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *format, ...)
     NSString *errorMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
     va_end(arguments);
     
-    NSString *logString = [NSString stringWithFormat:@"🔴 %@", errorMessage];
+    NSString *logString = [NSString stringWithFormat:@"%@ %@", RMErrorSymbol, errorMessage];
     [self logString:logString];
 }
 
@@ -105,7 +110,7 @@ FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *format, ...)
     NSString *infoMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
     va_end(arguments);
     
-    NSString *logString = [NSString stringWithFormat:@"🔵 %@", infoMessage];
+    NSString *logString = [NSString stringWithFormat:@"%@ %@", RMInfoSymbol, infoMessage];
     [self logString:logString];
 }
 
@@ -116,7 +121,7 @@ FOUNDATION_EXTERN void RMLogSuccessMessage(NSString *format, ...)
     NSString *successMessage = [[NSString alloc] initWithFormat:format arguments:arguments];
     va_end(arguments);
     
-    NSString *logString = [NSString stringWithFormat:@"✅ %@", successMessage];
+    NSString *logString = [NSString stringWithFormat:@"%@ %@", RMSuccessSymbol, successMessage];
     [self logString:logString];
 }
 

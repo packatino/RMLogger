@@ -9,6 +9,11 @@
 #import <Foundation/Foundation.h>
 
 
+extern NSString * const RMErrorSymbol;
+extern NSString * const RMInfoSymbol;
+extern NSString * const RMSuccessSymbol;
+
+
 /// Quick way to access [[RMLogger sharedInstance] log:]
 FOUNDATION_EXPORT void RMLog(NSObject *object);
 

@@ -46,7 +46,8 @@
 - (void)testUniversalLogWithString
 {
     [self.loggerMock log:@"hello"];
-    OCMVerify([self.loggerMock logString:@"🔵 hello"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ hello", RMInfoSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testUniversalLogWithError
@@ -57,7 +58,8 @@
                                      userInfo:userInfo];
     
     [self.loggerMock log:error];
-    OCMVerify([self.loggerMock logString:@"🔴 Error 123: \"error description\""]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ Error 123: \"error description\"", RMErrorSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 
@@ -66,37 +68,43 @@
 - (void)testErrorMessageLog
 {
     [self.loggerMock logErrorMessage:@"error"];
-    OCMVerify([self.loggerMock logString:@"🔴 error"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ error", RMErrorSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testErrorMessageLogWithFormat
 {
     [self.loggerMock logErrorMessage:@"error %.1f", 1.0];
-    OCMVerify([self.loggerMock logString:@"🔴 error 1.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ error 1.0", RMErrorSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testInfoMessageLog
 {
     [self.loggerMock logInfoMessage:@"info"];
-    OCMVerify([self.loggerMock logString:@"🔵 info"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ info", RMInfoSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testInfoMessageLogWithFormat
 {
     [self.loggerMock logInfoMessage:@"info %.1f", 1.0];
-    OCMVerify([self.loggerMock logString:@"🔵 info 1.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ info 1.0", RMInfoSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testSuccessMessageLog
 {
     [self.loggerMock logSuccessMessage:@"success"];
-    OCMVerify([self.loggerMock logString:@"✅ success"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ success", RMSuccessSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testSuccessMessageLogWithFormat
 {
     [self.loggerMock logSuccessMessage:@"success %.1f", 1.0];
-    OCMVerify([self.loggerMock logString:@"✅ success 1.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ success 1.0", RMSuccessSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 
@@ -108,7 +116,8 @@
                                      userInfo:userInfo];
     
     [self.loggerMock logError:error];
-    OCMVerify([self.loggerMock logString:@"🔴 Error 123: \"error description\""]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ Error 123: \"error description\"", RMErrorSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 
@@ -126,49 +135,57 @@
 - (void)testQuickErrorMessageLog
 {
     RMLogErrorMessage(@"error");
-    OCMVerify([self.loggerMock logString:@"🔴 error"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ error", RMErrorSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickErrorMessageWithFormatLog
 {
     RMLogErrorMessage(@"error %.1f", 1.0);
-    OCMVerify([self.loggerMock logString:@"🔴 error 1.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ error 1.0", RMErrorSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickInfoMessageLog
 {
     RMLogInfoMessage(@"info");
-    OCMVerify([self.loggerMock logString:@"🔵 info"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ info", RMInfoSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickInfoMessageWithFormatLog
 {
     RMLogInfoMessage(@"info %.1f", 1.0);
-    OCMVerify([self.loggerMock logString:@"🔵 info 1.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ info 1.0", RMInfoSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickSuccessMessageLog
 {
     RMLogSuccessMessage(@"success");
-    OCMVerify([self.loggerMock logString:@"✅ success"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ success", RMSuccessSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickSuccessMessageWithFormatLog
 {
     RMLogSuccessMessage(@"success %.1f", 1.0);
-    OCMVerify([self.loggerMock logString:@"✅ success 1.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ success 1.0", RMSuccessSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickSuccessMessageWithWrongFormat1
 {
     RMLogSuccessMessage(@"success %.1f");
-    OCMVerify([self.loggerMock logString:@"✅ success 0.0"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ success 0.0", RMSuccessSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 - (void)testQuickSuccessMessageWithWrongFormat2
 {
     RMLogSuccessMessage(@"success", 1.0);
-    OCMVerify([self.loggerMock logString:@"✅ success"]);
+    NSString *expectedOutput = [NSString stringWithFormat:@"%@ success", RMSuccessSymbol];
+    OCMVerify([self.loggerMock logString:expectedOutput]);
 }
 
 @end
