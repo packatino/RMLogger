@@ -9,9 +9,9 @@
 #import "RMLogger.h"
 
 
-NSString * const RMErrorSymbol = @"🔴";
-NSString * const RMInfoSymbol = @"🔵";
-NSString * const RMSuccessSymbol = @"✅";
+NSString * const RMErrorSymbol = @"(!)";
+NSString * const RMInfoSymbol = @"(i)";
+NSString * const RMSuccessSymbol = @"(ok)";
 
 
 FOUNDATION_EXTERN void RMLog(NSObject *object)
