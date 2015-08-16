@@ -129,4 +129,20 @@
     OCMVerify([self.loggerMock logSuccessMessage:logMessage]);
 }
 
+
+#pragma mark - Test Example
+
+- (void)testPrintingAllKindsOfLogs
+{
+    RMLogInfoMessage(@"This is just a simple information.");
+    RMLogSuccessMessage(@"The image has been uploaded successfully.");
+    RMLogErrorMessage(@"Failed to reach the server!");
+    
+    NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"This is an example error." forKey:NSLocalizedDescriptionKey];
+    NSError *error = [NSError errorWithDomain:@"RMDocumentationErrorDomain"
+                                         code:42
+                                     userInfo:userInfo];
+    RMLog(error);
+}
+
 @end
