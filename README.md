@@ -3,7 +3,14 @@
 
 Logs output to the console like NSLog but has some extra features like colors.
 
-## How to use RMLogger
+## Add RMLogger to your project
+The best way to use RMLogger is via [CocoaPods](https://cocoapods.org/) by adding the following line to your pod file:
+>     pod 'RMLogger'
+
+## Use RMLogger
+To use RMLogger you have to import the RMLogger.h class:
+>     #import <RMLogger.h>
+
 The simplest way to log a message to the console looks like this:
 >     RMLog(@"You log message");
 
